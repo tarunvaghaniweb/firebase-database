@@ -1,6 +1,7 @@
 import { auth } from './firebase';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 function Home() {
     const [userEmail, setUserEmail] = useState(null);
     const navigate = useNavigate();
@@ -12,6 +13,8 @@ function Home() {
             } else {
                 setUserEmail(null);
             }
+        }, (error) => {
+            console.error('Error in authentication state change:', error.message);
         });
 
         return () => unsubscribe();
@@ -20,7 +23,8 @@ function Home() {
     const handleLogout = async () => {
         try {
             await auth.signOut();
-            // Optional: Redirect to the login page or perform any other action after logout
+            // Redirect to the login page or perform any other action after logout
+            navigate('/Login');
         } catch (error) {
             console.error('Error signing out:', error.message);
         }
@@ -29,9 +33,11 @@ function Home() {
     const handleSignup = () => {
         navigate('/Signup');
     }
+
     const handleLogin = () => {
         navigate('/Login');
     }
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -46,14 +52,22 @@ function Home() {
                                 <a className="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link disabled" aria-disabled="true">Disabled</a>
+                                <a className="nav-link" onClick={handleSignup}>Signup</a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link" onClick={handleLogin}>Login</a>
+                            </li>
+                            {userEmail && (
+                                <li className="nav-item">
+                                    <button className="nav-link btn btn-link" onClick={handleLogout}>Logout</button>
+                                </li>
+                            )}
                         </ul>
-
                     </div>
                 </div>
             </nav>
         </div>
     )
 }
+
 export default Home;
