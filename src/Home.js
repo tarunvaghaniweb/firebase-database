@@ -1,7 +1,7 @@
 import { auth } from './firebase';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import './App.css';
 function Home() {
     const [userEmail, setUserEmail] = useState(null);
     const navigate = useNavigate();
@@ -39,26 +39,37 @@ function Home() {
     }
 
     return (
-        <div>
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-            <div className="container-fluid">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <div className="container">
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <a className="nav-link active" aria-current="page" href="/profile">Home</a>
-                        {userEmail && <span className="nav-link active">{userEmail}</span>}
-                        {userEmail && <button className="btn btn-danger ms-3" onClick={handleLogout}>Logout</button>}
-                        <button className="btn btn-success ms-5" onClick={handleSignup}>Signup</button>
-                        <button className="btn btn-success ms-2" onClick={handleLogin}>login</button>
+                    <div className="navbar-nav mx-auto">
+                        <a className="nav-link active" id='tex' aria-current="page" href="/profile">Home</a>
+                        <div className='text-center '>
+
+                            {userEmail && <span className="nav-link active">{userEmail}</span>}
+                           
+                        </div>
+                        <div className='text-center'>
+                        {userEmail && <button className="btn btn-danger btn-sm ms-3 me-3" onClick={handleLogout}>Logout</button>}
+
+                        </div>
+                        <div className='text-center'>
+                            <button className="btn btn-success btn-sm me-3 " id='bt' onClick={handleSignup}>Signup</button>
+                        </div>
+                        <div className='text-center'>
+                            <button className="btn btn-success btn-sm me-3 " id='bt1' onClick={handleLogin}>Login</button>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </nav>
-    </div> 
-    )
+    );
 }
 
 export default Home;
