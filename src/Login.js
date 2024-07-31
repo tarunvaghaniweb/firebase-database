@@ -30,7 +30,7 @@ const Login = () => {
         <main className="login-container">
             <section className="login-section">
                 <div className="login-form">
-                    <h2>FocusApp</h2>
+                    <h2>Login Page</h2>
                     <form>
                         <div className="input-group">
                             <label htmlFor="email-address">Email address</label>
@@ -72,7 +72,7 @@ const Login = () => {
 
                     <p className="signup-link">
                         No account yet?{' '}
-                        <NavLink to="/signup">Sign up</NavLink>
+                        <NavLink to="/">Sign up</NavLink>
                     </p>
                 </div>
             </section>

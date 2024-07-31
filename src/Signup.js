@@ -28,7 +28,7 @@ const Signup = () => {
         <main className="signup-container">
             <section className="signup-section">
                 <div className="signup-form">
-                    <h1>FocusApp</h1>
+                    <h1>Sign-up Page</h1>
                     <form onSubmit={onSubmit}>
                         <div className="input-group">
                             <label htmlFor="email-address">Email address</label>

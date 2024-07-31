@@ -24,7 +24,7 @@ function Home() {
         try {
             await auth.signOut();
             // Redirect to the login page or perform any other action after logout
-            navigate('/Login');
+           
         } catch (error) {
             console.error('Error signing out:', error.message);
         }
